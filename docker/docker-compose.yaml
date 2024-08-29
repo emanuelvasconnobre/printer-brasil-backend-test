@@ -1,0 +1,19 @@
+version: "3.9"
+
+name: printer-test-project
+services:
+  db:
+    image: postgres:16.2-alpine3.19
+    environment:
+    - POSTGRES_USER=${DB_USER:-postgres}
+    - POSTGRES_PASSWORD=${DB_PASSWORD:-strongpassword}
+    - POSTGRES_DB=${DB_NAME:-printer-db}
+    ports:
+    - "${DB_PORT:-6500}:5432"
+    volumes:
+    - printer_postgres_data:/var/lib/postgresql/data
+    env_file:
+    - ../.env
+
+volumes:
+  printer_postgres_data:
