@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:strongpassword@localhost:6500/printer-db"
+  url      = env("POSTGRES_URL")
 }
 
 model User {
